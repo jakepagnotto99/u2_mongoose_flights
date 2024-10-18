@@ -1,16 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-// Connect to the MongoDB database called "flightsDatabase"
-mongoose.connect('mongodb://localhost:27017/flightsDatabase', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(
+    'mongodb://localhost:27017/flightsDatabase'
+  )
+  .then(() => {
+    console.log('Successfully connected to MongoDB.')
+  })
+  .catch((e) => {
+    console.error('Connection error', e.message)
+  })
 
-const db = mongoose.connection;
+mongoose.set('debug', true)
 
-db.on('error', console.error.bind(console, 'Connection error:'));
-db.once('open', () => {
-  console.log('Connected to flightsDatabase!');
-});
+const db = mongoose.connection
 
-module.exports = mongoose;
+module.exports = db

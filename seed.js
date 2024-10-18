@@ -1,6 +1,6 @@
 const mongoose = require('./db/index');
-const Airport = require('./models/Airport');
-const Flight = require('./models/Flight');
+const Airport = require('./models/airport');
+const Flight = require('./models/flight');
 
 async function seedDatabase() {
   // Clear existing data
